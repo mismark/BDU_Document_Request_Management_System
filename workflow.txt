@@ -1,0 +1,78 @@
+SYSTEM TESTING WORKFLOW
+=======================
+
+To test the entire BDU-GDRMS system thoroughly, follow this "Golden Path" workflow. This covers every major component (Graduate, Registrar, Admin, and Public Verification).
+
+PREREQUISITE:
+Run the seed script to ensure you have the default test accounts set up.
+Command: php seed_data.php
+
+Phase 1: The Graduate Flow (Requesting a Document)
+--------------------------------------------------
+Goal: Verify a student can register and make a request.
+
+1. Open your browser to your local project URL (e.g., http://localhost/bdu_gdrms/).
+2. Log in as the Test Graduate:
+   - Email: graduate_test@bdu.edu.et
+   - Password: password123
+3. Create a Request:
+   - Click "New Document Request".
+   - Select "Certificate", purpose "Job Application", and "Digital" delivery.
+   - Submit it.
+4. Check Status:
+   - You should be redirected to the Dashboard.
+   - Verify the new request appears with the status "Pending".
+5. Logout (Click Logout in the menu).
+
+Phase 2: The Registrar Flow (Processing the Request)
+----------------------------------------------------
+Goal: Verify the Registrar can see and approve requests.
+
+1. Log in as the Registrar:
+   - Email: registrar@bdu.edu.et
+   - Password: password
+2. View Queue:
+   - You should see the "Dashboard" with a list of Pending requests.
+   - Find the request you just created in Phase 1.
+   - Click the "Authenticate" button.
+3. Approve:
+   - Review the details on the decision page.
+   - Click "Authorize Issue" (Green button).
+4. Confirm:
+   - The system should generate a specific Record ID (e.g., BDU-2025-ABCD).
+   - COPY THIS ID (you will need it for Phase 4).
+5. Logout.
+
+Phase 3: The Graduate Return (Retrieving the Document)
+------------------------------------------------------
+Goal: Verify the student gets their document.
+
+1. Log in again as the Graduate (graduate_test@bdu.edu.et).
+2. Check Dashboard:
+   - The request status should now be "Approved" (Green).
+   - A "Get PDF" button should now be available.
+3. Logout.
+
+Phase 4: Public Verification (The "HR Manager" Test)
+----------------------------------------------------
+Goal: Verify the public can check the document's validity without logging in.
+
+1. Go to the Home Page (do not log in).
+2. Click "Verify" in the top navigation.
+3. Enter the Record ID you copied in Phase 2.
+4. Click "Verify Document".
+5. Result: You should see a green "Verified" status with the student's name and document details.
+
+Phase 5: The Admin Check (System Governance)
+------------------------------------------------
+Goal: Verify the Admin can manage users.
+
+1. Log in as the Admin:
+   - Email: admin@bdu.edu.et
+   - Password: password
+2. Manage Roles:
+   - Look at the user list on the dashboard.
+   - Find "Test Graduate".
+   - Change their dropdown from "Graduate" to "Registrar".
+   - The page should refresh/update.
+   - (Optional) Change it back to "Graduate" to clean modification.
