@@ -32,6 +32,11 @@ if (isset($_SESSION['user_id'])) {
         </div>
 
         <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="johndoe" required>
+        </div>
+
+        <div class="form-group">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required>
         </div>
@@ -39,12 +44,22 @@ if (isset($_SESSION['user_id'])) {
         <div class="flex gap-4">
             <div class="form-group w-full">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+                <div class="password-toggle-group">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+                    <button type="button" class="password-toggle-btn">
+                        <i data-lucide="eye" size="18"></i>
+                    </button>
+                </div>
             </div>
 
             <div class="form-group w-full">
                 <label for="confirm_password">Confirm</label>
-                <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="••••••••" required>
+                <div class="password-toggle-group">
+                    <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="••••••••" required>
+                    <button type="button" class="password-toggle-btn">
+                        <i data-lucide="eye" size="18"></i>
+                    </button>
+                </div>
             </div>
         </div>
 

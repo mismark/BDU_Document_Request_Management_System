@@ -33,8 +33,8 @@ if (isset($_SESSION['user_id'])) {
         <input type="hidden" name="action" value="login">
         
         <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com" required>
+            <label for="email">Username or Email</label>
+            <input type="text" id="email" name="email" class="form-control" placeholder="user@example.com" required>
         </div>
         
         <div class="form-group">
@@ -42,7 +42,12 @@ if (isset($_SESSION['user_id'])) {
                 <label for="password" class="mb-0">Password</label>
                 <a href="forgot_password.php" class="form-link">Forgot?</a>
             </div>
-            <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+            <div class="password-toggle-group">
+                <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+                <button type="button" class="password-toggle-btn">
+                    <i data-lucide="eye" size="18"></i>
+                </button>
+            </div>
         </div>
 
         <button type="submit" class="btn btn-primary btn-block p-4">Sign In</button>

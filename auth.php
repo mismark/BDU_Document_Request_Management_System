@@ -6,10 +6,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // LOGIN LOGIC
     if ($action == 'login') {
-        $email = sanitize($conn, $_POST['email']);
+        $identifier = sanitize($conn, $_POST['email']); // Now acts as identifier (email or username)
         $password = $_POST['password'];
 
-        $sql = "SELECT id, full_name, password, role FROM users WHERE email = '$email'";
+        $sql = "SELECT id, full_name, username, password, role FROM users WHERE email = '$identifier' OR username = '$identifier'";
         $result = $conn->query($sql);
 
         if ($result->num_rows == 1) {
@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // REGISTER LOGIC
     elseif ($action == 'register') {
         $full_name = sanitize($conn, $_POST['full_name']);
+        $username = sanitize($conn, $_POST['username']);
         $email = sanitize($conn, $_POST['email']);
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
@@ -52,10 +53,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
 
-        // Check if email exists
-        $check = $conn->query("SELECT id FROM users WHERE email = '$email'");
+        // Check if email or username exists
+        $check = $conn->query("SELECT id FROM users WHERE email = '$email' OR username = '$username'");
         if ($check->num_rows > 0) {
-            header("Location: register.php?error=Email already registered");
+            header("Location: register.php?error=Email or Username already registered");
             exit();
         }
 
@@ -63,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         // Insert User (Default role: graduate)
-        $sql = "INSERT INTO users (full_name, email, password, role) VALUES ('$full_name', '$email', '$hashed_password', 'graduate')";
+        $sql = "INSERT INTO users (full_name, username, email, password, role) VALUES ('$full_name', '$username', '$email', '$hashed_password', 'graduate')";
         
         if ($conn->query($sql) === TRUE) {
             header("Location: login.php?success=Account created successfully. Please login.");

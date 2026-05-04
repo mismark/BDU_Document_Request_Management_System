@@ -643,6 +643,35 @@ tr:hover {
   margin-bottom: 1.5rem;
 }
 
+.password-toggle-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-toggle-group .form-control {
+  padding-right: 2.75rem;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 0.875rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: var(--transition);
+  z-index: 10;
+}
+
+.password-toggle-btn:hover {
+  color: var(--primary-color);
+}
+
 .form-group label {
   display: block;
   font-size: 0.875rem;

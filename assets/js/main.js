@@ -107,4 +107,23 @@ document.addEventListener("DOMContentLoaded", () => {
       card.style.transform = "translateY(0)";
     });
   });
+
+  // Password Toggle Logic
+  const toggleBtns = document.querySelectorAll(".password-toggle-btn");
+  toggleBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const input = btn.parentElement.querySelector("input");
+      const icon = btn.querySelector("i");
+
+      if (input.type === "password") {
+        input.type = "text";
+        icon.setAttribute("data-lucide", "eye-off");
+      } else {
+        input.type = "password";
+        icon.setAttribute("data-lucide", "eye");
+      }
+      lucide.createIcons();
+    });
+  });
 });

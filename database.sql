@@ -6,6 +6,7 @@ USE bdu_drms;
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     role ENUM('graduate', 'registrar', 'admin') NOT NULL DEFAULT 'graduate',
@@ -54,6 +55,6 @@ CREATE TABLE IF NOT EXISTS verification_logs (
 -- Below is a placeholder. You SHOULD register a new admin via the UI to get a proper hash or use this hash: 
 -- $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi (which is 'password')
 
-INSERT INTO users (full_name, email, password, role) VALUES 
-('System Admin', 'admin@bdu.edu.et', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin'),
-('Main Registrar', 'registrar@bdu.edu.et', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'registrar');
+INSERT INTO users (full_name, username, email, password, role) VALUES 
+('System Admin', 'admin', 'admin@bdu.edu.et', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin'),
+('Main Registrar', 'registrar', 'registrar@bdu.edu.et', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'registrar');
