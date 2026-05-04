@@ -76,3 +76,6 @@ Goal: Verify the Admin can manage users.
    - Change their dropdown from "Graduate" to "Registrar".
    - The page should refresh/update.
    - (Optional) Change it back to "Graduate" to clean modification.
+
+
+this is all done by mismark

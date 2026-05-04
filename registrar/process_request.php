@@ -1,3 +1,4 @@
+// Process Request - Registrar Review & Action
 <?php
 include '../config.php';
 check_auth('registrar');

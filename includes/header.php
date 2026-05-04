@@ -1,3 +1,4 @@
+// Common Header - Included in all pages for consistent layout & navigation
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,3 +1,4 @@
+// Registrar Dashboard - Manage Authentication & Verification Queue
 <?php
 include '../config.php';
 check_auth('registrar');
